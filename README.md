@@ -98,11 +98,17 @@ const text = new PointText({
 });
 ```
 
-## Group
+## Hierarchy
+
+The structure of a Paper.js project is based on the same stacking order principle that graphic design applications such as Adobe Illustrator and Adobe Photoshop use.
+
+[`Reference`](http://paperjs.org/tutorials/project-items/project-hierarchy/)
 
 `Group(object)`
 
-- A Group is a collection of items. When you transform a Group, its children are treated as a single unit without changing their relative positions.
+- You can think of a Group as a folder. They group items together and any actions performed on them directly change the items that are are contained within them.
+
+-For example, changing a style property like item.fillColor on a group will change that property on all of its children.
 
 _Parameters:_
 object — an object containing properties describing the path’s attributes
@@ -126,4 +132,26 @@ const group = new Group({
 });
 ```
 
-- ![cn](https://github.com/calinursu/steel-reinforcement-tool/blob/main/Screenshot%202023-05-07%20at%2014.11.22.png)
+![group](https://github.com/calinursu/steel-reinforcement-tool/blob/main/Screenshot%202023-05-07%20at%2014.11.22.png)
+
+_Adding Children to Groups_
+
+- When you create a group, it doesn't have any children yet. You can add children to groups in a few different ways.
+
+`new Group([path, secondPath]);`
+
+You can also add children to a group after it is created, using the item.`addChild(item)` function:
+
+```jsx
+// Create an empty group:
+const group = new Group();
+
+// Add the paths to the group:
+group.addChild(path);
+group.addChild(secondPath);
+```
+
+_Removing Items and Children_
+To remove an item from your Paper.js document, you call its `item.remove()` function. This doesn't destroy the item, it is only removed from the structure of the project and won't be drawn. You can add the item back to your project at any time.
+
+To remove all children contained within an item, you can call `item.removeChildren()`.
