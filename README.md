@@ -10,11 +10,15 @@ Documentation for PaperJS, the vector graphics scripting framework, used to draw
 
 1. [Point](#point)
 1. [Line](#line)
+1. [Arc](#arc)
+1. [Text](#text)
+1. [Group](#group)
 
 ## Point
 
 `Point(x, y)`
-The Point object represents a point in the two dimensional space
+
+- The Point object represents a point in the two dimensional space
 
 - Create a point at x: 10, y: 5
 
@@ -22,16 +26,13 @@ _Example:_
 
 ```jsx
 const point = new Point(10, 5);
-
-Constructors
-
-Point(x: number, y: number)
 ```
 
 ## Line
 
 `Path.Line(object)`
-Creates a linear path item.
+
+- Creates a linear path item.
 
 _Parameters:_
 object — an object containing properties describing the path’s attributes
@@ -52,7 +53,8 @@ const path = new Path.Line({
 ## Arc
 
 `Path.Arc(object)`
-Creates a circular arc path item.
+
+- Creates a circular arc path item.
 
 _Parameters:_
 object — an object containing properties describing the path’s attributes
@@ -74,7 +76,8 @@ const path = new Path.Arc({
 ## Text
 
 `PointText(object)`
-A typography item which starts from a point and extends by the amount of characters it has.
+
+- A typography item which starts from a point and extends by the amount of characters it has.
 
 _Parameters:_
 object — an object containing properties describing the path’s attributes
@@ -98,7 +101,8 @@ const text = new PointText({
 ## Group
 
 `Group(object)`
-A Group is a collection of items. When you transform a Group, its children are treated as a single unit without changing their relative positions.
+
+- A Group is a collection of items. When you transform a Group, its children are treated as a single unit without changing their relative positions.
 
 _Parameters:_
 object — an object containing properties describing the path’s attributes
