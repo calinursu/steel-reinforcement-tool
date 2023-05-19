@@ -12,7 +12,7 @@ Documentation for PaperJS, the vector graphics scripting framework, used to draw
 1. [Line](#line)
 1. [Arc](#arc)
 1. [Text](#text)
-1. [Group](#group)
+1. [Grouping](#hierarchy)
 
 ## Point
 
@@ -20,7 +20,7 @@ Documentation for PaperJS, the vector graphics scripting framework, used to draw
 
 - The Point object represents a point in the two dimensional space
 
-- Create a point at x: 10, y: 5
+- Create a point at `x: 10, y: 5`
 
 _Example:_
 
@@ -72,6 +72,8 @@ const path = new Path.Arc({
   strokeColor: "black",
 });
 ```
+
+![arc](https://github.com/calinursu/steel-reinforcement-tool/screenshots/blob/main/Screenshot%202023-05-08%20at%2010.57.13.png)
 
 ## Text
 
@@ -132,7 +134,7 @@ const group = new Group({
 });
 ```
 
-![group](https://github.com/calinursu/steel-reinforcement-tool/blob/main/Screenshot%202023-05-07%20at%2014.11.22.png)
+![group](https://github.com/calinursu/steel-reinforcement-tool/screenshots/blob/main/Screenshot%202023-05-07%20at%2014.11.22.png)
 
 _Adding Children to Groups_
 
@@ -152,6 +154,15 @@ group.addChild(secondPath);
 ```
 
 _Removing Items and Children_
-To remove an item from your Paper.js document, you call its `item.remove()` function. This doesn't destroy the item, it is only removed from the structure of the project and won't be drawn. You can add the item back to your project at any time.
 
-To remove all children contained within an item, you can call `item.removeChildren()`.
+- To remove an item from your Paper.js document, you call its `item.remove()` function. This doesn't destroy the item, it is only removed from the structure of the project and won't be drawn. You can add the item back to your project at any time.
+
+- To remove all children contained within an item, you can call `item.removeChildren()`.
+
+_Grid_
+
+- Drawing the grid
+
+```jsx
+TODO
+```
