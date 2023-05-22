@@ -1,5 +1,17 @@
 import paper, { Group, Path, Point } from "paper";
 
+// interface Object {
+//   size: number;
+//   strokeWidth: number;
+//   strokeColor: paper.Color;
+//   opacity: number;
+// }
+
+// interface Grid extends Object {
+//   bound: paper.Rectangle;
+// }
+
+
 export default class Drawing {
   canvas: HTMLCanvasElement;
   collection: paper.Group;
@@ -11,7 +23,7 @@ export default class Drawing {
     this.canvas = canvas;
     this.collection = new Group();
     this.gridGroup = new Group();
-    this.path = new Path([new Point(0, 0)]);
+    this.path = new Path();
     this.lineList = [];
     this.startFromAngle = 0;
 
@@ -64,28 +76,38 @@ export default class Drawing {
       },
     ];
 
-    measurements.map((measurement: Measurement) => {
-      const point = new Point({
-        length: measurement.length,
-        angle: this.startFromAngle,
-      });
+    // We need a starting point (Point A)
+    const pointA = new Point(0, 0);
+    this.path.add(pointA);
 
-      const addedMeasurement = this.path.lastSegment.point.add(point);
-      this.path.add(addedMeasurement);
-
-      this.startFromAngle += measurement.angle;
-      // return this.startFromAngle;
+    // Point B
+    const vector1 = new Point({
+      length: 200,
+      angle: 0,
     });
 
+    const pointB = pointA.add(vector1);
+    this.path.add(pointB);
+
+     // Point C
+    const vector2 = new Point({
+      length: 100,
+      angle: 90,
+    });
+    const pointC = pointB.add(vector2);
+    this.path.add(pointC);
+
+
+    // Where we draw lines between points we defined earlier
     for (let i = 0; i < this.path.segments.length; i++) {
       const segment = this.path.segments[i];
 
-      if(!segment.previous) {
+      if(!segment.next) {
         continue;
       }
 
-      const from = segment.previous.point;
-      const to = from.add(segment.point.subtract(from));
+      const from = segment.point;
+      const to = segment.next.point;
       
       const line = new Path.Line({
           from,
@@ -97,27 +119,27 @@ export default class Drawing {
       this.lineList.push(line);
     }
 
-    this.collection.addChildren([...this.lineList]);
+    this.collection.addChildren(this.lineList);
     this.collection.position = paper.view.center;
   }
 
   drawGrid(bound: paper.Rectangle) {
     const size = 40;
     const strokeWidth = 1;
-    const strokeColor = new paper.Color("Fuchsia");
+    const strokeColor = new paper.Color("fuchsia");
     const opacity = 0.5;
 
     for (let i = 0; i < bound.width / size; i++) {
         const horizontalLine = new Path.Line({
             from: bound.topLeft.add(new Point(0, size * i)),
-            to:  bound.topRight.add(new Point(0, size * i)),
+            to: bound.topRight.add(new Point(0, size * i)),
             strokeWidth,
             strokeColor,
             opacity,
         });
         const verticalLine = new Path.Line({
-            from:  bound.topLeft.add(new Point(size * i, bound.top)),
-            to:  bound.bottomLeft.add(new Point(size * i, bound.bottom)),
+            from: bound.topLeft.add(new Point(size * i, bound.top)),
+            to: bound.bottomLeft.add(new Point(size * i, bound.bottom)),
             strokeWidth,
             strokeColor,
             opacity,

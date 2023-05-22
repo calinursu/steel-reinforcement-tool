@@ -73,7 +73,7 @@ const path = new Path.Arc({
 });
 ```
 
-![arc](https://github.com/calinursu/steel-reinforcement-tool/screenshots/blob/main/Screenshot%202023-05-08%20at%2010.57.13.png)
+![arc](https://github.com/calinursu/steel-reinforcement-tool/blob/main/screenshots/Screenshot%202023-05-08%20at%2010.57.13.png)
 
 ## Text
 
@@ -134,7 +134,7 @@ const group = new Group({
 });
 ```
 
-![group](https://github.com/calinursu/steel-reinforcement-tool/screenshots/blob/main/Screenshot%202023-05-07%20at%2014.11.22.png)
+![group](https://github.com/calinursu/steel-reinforcement-tool/blob/main/screenshots/Screenshot%202023-05-07%20at%2014.11.22.png)
 
 _Adding Children to Groups_
 
@@ -164,5 +164,5 @@ _Grid_
 - Drawing the grid
 
 ```jsx
-TODO
+TODO;
 ```
